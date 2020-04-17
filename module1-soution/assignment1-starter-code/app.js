@@ -8,9 +8,21 @@ LunchController.$inject = ['$scope'];
 function LunchController ($scope) {
   $scope.name = "";
   $scope.value = "";
+  $scope.setStyle = {};
+  $scope.setBorder = {};
   $scope.num = function () {
     var returnedValue = checkTooMuch($scope.name);
     $scope.value = returnedValue;
+    if ( $scope.value == "Enjoy!" )
+      $scope.setStyle = {'color' : 'green'};
+    else if ( $scope.value == "Too much!" )
+      $scope.setStyle = {'color' : 'red'};
+    else
+      $scope.setStyle = {'color' : 'black'};
+    if ( $scope.value == "Enjoy!" || $scope.value == "Too much!" )
+      $scope.setBorder = {'border-color' : 'green'};
+    else
+      $scope.setBorder = {'border-color' : 'red'};
   }
 }
 
