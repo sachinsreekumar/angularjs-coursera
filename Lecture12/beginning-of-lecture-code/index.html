@@ -10,10 +10,13 @@
   <body>
     <h1>Filters</h1>
     <div ng-controller='MsgController'>
-      {{name}} has a message for you: <br>
-      {{sayMessage()}}
+      {{name | uppercase}} has a message for you: <br>
+      {{sayMessage()}}<br>
+      {{sayLovesMessage()}}<br>
+      {{sayLovesMessage() | truth : 'healthy' : 'cookie' | uppercase}}
       <div>
         <button ng-click="feedYaakov()">Feed Yaakov</button>
+        Cookie Cost : {{cookieCost | currency : "Rs." : 4}}
         <br>
 
         <img ng-src="images/yaakov_{{stateOfBeing}}.png">

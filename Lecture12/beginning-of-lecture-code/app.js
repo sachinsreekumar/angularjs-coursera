@@ -2,20 +2,44 @@
 'use strict';
 
 angular.module('MsgApp', [])
-.controller('MsgController', MsgController);
-
-MsgController.$inject = ['$scope'];
-function MsgController($scope) {
+.controller('MsgController', MsgController)
+.filter('loves',LovesFilter)
+.filter('truth',TruthFilter);
+MsgController.$inject = ['$scope','$filter','lovesFilter'];
+function MsgController($scope,$filter,lovesFiler) {
   $scope.name = "Yaakov";
   $scope.stateOfBeing = "hungry";
-
+  $scope.cookieCost = .45;
   $scope.sayMessage = function () {
-    return "Yaakov likes to eat healthy snacks at night!";
+    var msg = "Yaakov likes to eat healthy snacks at night!";
+    var output = $filter('uppercase')(msg);
+    return output;
+  };
+  $scope.sayLovesMessage = function () {
+    var msg = "Yaakov loves to eat healthy snacks at night!";
+    var output = lovesFiler(msg);
+    return output;
   };
 
   $scope.feedYaakov = function () {
     $scope.stateOfBeing = "fed";
   };
+}
+
+function LovesFilter() {
+  return function(input) {
+    input = input || "";
+    input = input.replace("likes","loves");
+    return input;
+  };
+}
+
+function TruthFilter() {
+  return function(input, target, replace) {
+    input = input || "";
+    input = input.replace(target,replace);
+    return input;
+  }
 }
 
 })();
