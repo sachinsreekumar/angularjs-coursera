@@ -15,19 +15,23 @@
       <ul>
         <li ng-repeat="item in shoppingList1">{{ item }}</li>
       </ul>
-
+      <br>
       <!-- Shopping List #2: -->
-      <!-- <ul>
+      <ul>
         <li ng-repeat="item in shoppingList2">Buy {{item.quantity}} of {{item.name}}(s)</li>
-      </ul> -->
-
+      </ul>
+      <br>
       <!-- Shopping List #3: -->
       <!-- <input type="text" ng-model="shoppingList2[0].quantity">
       -->
-      <!-- <ul>
+      <ul>
         <li ng-repeat="item in shoppingList2">{{$index + 1}}. Buy {{item.quantity}} of {{item.name}}(s)</li>
       </ul>
-      -->
+
+      <br>
+      <input type="text" ng-model="newItemName" placeholder="Item Name">
+      <input type="text" ng-model="newItemQuantity" placeholder="Item Quantity">
+      <button ng-click="addToList()">Add new Item </button>
       <!-- <input type="text" ng-model="newItemName" placeholder="item name">
       <input type="text" ng-model="newItemQuantity" placeholder="item quantity">
       <button ng-click="addToList()">Add To List</button>
