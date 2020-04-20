@@ -6,10 +6,14 @@ angular.module('CounterApp', [])
 
 CounterController.$inject = ['$scope'];
 function CounterController($scope) {
-
+  $scope.onceCounter = 0;
   $scope.showNumberOfWatchers = function () {
-
+    console.log("No. of watchers:",$scope.$$watchersCount);
   };
+
+  $scope.countOnce = function () {
+    $scope.onceCounter = 1;
+  }
 
 }
 
