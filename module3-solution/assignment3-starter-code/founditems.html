@@ -1,0 +1,9 @@
+<table width='100%'>
+  <tr ng-repeat="item in list.found">
+    <td style="text-align:left; padding: 10px;">{{ item.name }}</td>
+    <td style="text-align:center">{{ item.short_name }}</td>
+    <td style="text-align:left; padding: 10px;">{{ item.description }}</td>
+    <td align='center'><button class="btn btn-danger  btn-lg" ng-click="list.onRemove({index:$index})">Don't want this one!</button></td>
+  </tr>
+</table>
+<div style="font-size: 30px; color:red; font-weight:600; ">{{list.errorMessage}}</div> 

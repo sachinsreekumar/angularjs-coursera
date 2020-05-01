@@ -37,12 +37,7 @@
       <button class="btn btn-primary" ng-click="found.narrow();">Narrow It Down For Me!</button>
     </div>
     <br><br><br>
-    <!-- <ul>
-      <li ng-repeat="item in narrowDown.items">
-        {{item.name}}, {{item.short_name}}, {{item.description}}
-      </li>
-    </ul> -->
-    <table width='100%'>
+    <!-- <table width='100%'>
       <tr ng-repeat="item in found.items">
         <td style="text-align:left; padding: 10px;">{{ item.name }}</td>
         <td style="text-align:center">{{ item.short_name }}</td>
@@ -50,11 +45,10 @@
         <td align='center'><button class="btn btn-danger  btn-lg" ng-click="found.remove($index)">Don't want this one!</button></td>
       </tr>
     </table>
-    <div style="font-size: 30px; color:red; font-weight:600; ">{{found.errorMsg}}</div>
-
+    <div style="font-size: 30px; color:red; font-weight:600; ">{{found.errorMsg}}</div> -->
 
     <!-- found-items should be implemented as a component -->
-    <found-items found-items="...." on-remove="...."></found-items>
+    <found-items found="found.items" on-remove="found.remove(index)" error-message="found.errorMsg"></found-items>
   </div>
 
 </body>

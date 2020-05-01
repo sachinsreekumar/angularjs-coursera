@@ -3,7 +3,34 @@
   angular.module('NarrowItDownApp',[])
   .controller('NarrowItDownController',NarrowItDownController)
   .service('MenuSearchService',MenuSearchService)
-  .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
+  .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
+  .directive('foundItems',FoundItems);
+
+  function FoundItems () {
+    var ddo = {
+      templateUrl : 'founditems.html',
+      scope : {
+        found: '<',
+        onRemove: '&',
+        errorMessage : '<'
+      },
+      controller: FoundItemsDirectiveController,
+      controllerAs: 'list',
+      bindToController: true
+    };
+    return ddo;
+  }
+
+
+  function FoundItemsDirectiveController() {
+   var list = this;
+
+   list.isEmpty = function() {
+     return list.found != undefined && list.found.length === 0;
+   };
+ }
+
+
 
   NarrowItDownController.$inject = ['MenuSearchService'];
   function NarrowItDownController (MenuSearchService) {
@@ -32,6 +59,9 @@
 
     found.remove = function (itemIndex) {
       found.items.splice(itemIndex, 1);
+      console.log(found.items.length);
+      if(found.items.length == 0)
+        found.errorMsg = "All Items Removed... Search Again!!!";
     }
 
   }
