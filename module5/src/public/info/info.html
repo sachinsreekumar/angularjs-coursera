@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>My information</h1>
+    <hr>
+    <div ng-if="!infoCtrl.info">Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></div>
+    <div ng-if="infoCtrl.info">
+        <table align="center">
+            <tr>
+                <td>First Name :</td>
+                <td> <span>{{infoCtrl.info.firstName}}</span></td>
+            </tr>
+            <tr>
+                <td>Last Name :</td>
+                <td> <span>{{infoCtrl.info.lastName}}</span></td>
+            </tr>
+            <tr>
+                <td>Email Id :</td>
+                <td> <span>{{infoCtrl.info.email}}</span></td>
+            </tr>
+            <tr>
+                <td>Phone Number :</td>
+                <td> <span>{{infoCtrl.info.phone}}</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <h2 class="text-center" style="vertical-align:center">Favorite</h2>
+                    </div>
+                </td>
+
+                <td> <menu-item menu-item="infoCtrl.menuItem">
+                    </menu-item></td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>

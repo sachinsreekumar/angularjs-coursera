@@ -1,0 +1,94 @@
+<div class="container" ng-controller="formController as reg">
+    <fieldset>
+
+        <legend class="heading">Newsletter Registration</legend>
+
+        <form name="NewsletterForm" novalidate>
+            <table align="center">
+                <tr ng-if="reg.showMsg">
+                    <th>
+                        <span>Your information has been saved!</span>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" ng-model="reg.user.firstName" name="firstName"
+                                placeholder="First Name" required>
+                        </div><br>
+
+                    </td>
+                    <td><span style="color:red;"
+                            ng-if="NewsletterForm.firstName.$error.required && NewsletterForm.firstName.$touched">   *Please
+                            enter your first name</span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" name="lastName" ng-model="reg.user.lastName"
+                                placeholder="Last Name" required>
+                        </div><br>
+                    </td>
+                    <td><span style="color:red;"
+                            ng-if="NewsletterForm.lastName.$error.required && NewsletterForm.lastName.$touched">*Please
+                            enter your last name</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-envelope"></i></span>
+                            <input type="email" class="form-control" ng-model="reg.user.email" name="email"
+                                placeholder="Email-Id" required>
+                        </div><br>
+                    </td>
+                    <td> <span style="color:red;" ng-if="NewsletterForm.email.$invalid &&
+                        NewsletterForm.email.$touched">
+                          *Must be valid email address:handle@domain.com
+                        </span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-phone"></i></span>
+                            <input type="text" class="form-control" name="phone" placeholder="###-###-####"
+                                ng-model="reg.user.phone" pattern="(\d{3})-(\d{3})-(\d{4})" required>
+                        </div><br>
+                    </td>
+                    <td> <span style="color:red;" ng-if="NewsletterForm.phone.$invalid &&
+                        NewsletterForm.phone.$touched">
+                            *Phone must be in the format ###-###-####
+                        </span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-ice-lolly-tasted"></i></span>
+                            <input type="text" class="form-control" ng-model="reg.user.food" name="food"
+                                ng-blur="reg.validateFood()" placeholder="Favorite Dish">
+                        </div></span><br>
+                    </td>
+                    <td>
+                        <span style="color:red;" ng-if="reg.invalidFavourite">No such menu number exists</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        <button ng-disabled="NewsletterForm.$invalid " type="button" class="btn btn-default"
+                            ng-click="reg.submit()">Save</button>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </fieldset>
+</div>
