@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" ng-app="NarrowItDownApp">
+<style media="screen">
+  table, th , td  {
+    border: 2px solid grey;
+    border-collapse: collapse;
+    padding: 100px;
+  }
+  table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
+  table tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  .alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+  }
+</style>
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css"> -->
+  </head>
+<body>
+   <div class="container" ng-controller = 'NarrowItDownController as found'>
+    <h1>Narrow Down Your Chinese Menu Choice</h1>
+
+    <div class="form-group">
+      <input type="text" placeholder="search term" class="form-control" ng-model="found.searchTerm">
+    </div>
+    <div class="form-group narrow-button">
+      <button class="btn btn-primary" ng-click="found.narrow();">Narrow It Down For Me!</button>
+    </div>
+    <br><br><br>
+    <table width='100%'>
+      <tr ng-repeat="item in found.items">
+        <td style="text-align:left; padding: 10px;">{{ item.name }}</td>
+        <td style="text-align:center">{{ item.short_name }}</td>
+        <td style="text-align:left; padding: 10px;">{{ item.description }}</td>
+        <td align='center'><button class="btn btn-danger  btn-lg" ng-click="found.remove($index)">Don't want this one!</button></td>
+      </tr>
+    </table>
+    <div style="font-size: 30px; color:red; font-weight:600; ">{{found.errorMsg}}</div>
+
+    <!-- found-items should be implemented as a component -->
+    <!-- <found-items found="found.items" on-remove="found.remove(index)" error-message="found.errorMsg"></found-items> -->
+  </div>
+
+</body>
+</html>
